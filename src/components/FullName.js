@@ -5,8 +5,8 @@ const FullName = () => {
     first: "",
     last: "",
   });
-  const [fullName, setFullName] = useState(""); 
-  const [formError, setFormError] = useState(false); 
+  const [fullName, setFullName] = useState("");
+  const [formError, setFormError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,34 +17,36 @@ const FullName = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (formData.first === "" || formData.last === "") {
-      setFormError(true); 
-      setFullName(""); 
-      return; 
+      setFormError(true);
+      setFullName("");
+      return;
     }
 
-    setFullName(`${formData.first} ${formData.last}`); 
-    setFormError(false); 
-    setFormData({
-      first: "",
-      last: "",
-    });
+    setFullName(`${formData.first} ${formData.last}`);
+    setFormError(false);
+    setTimeout(() => {
+      setFormData({
+        first: "",
+        last: "",
+      });
+    }, 100);
   };
 
   return (
     <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1>Full Name Display</h1>
-      <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name: </label>
         <input
           type="text"
           name="first"
-          id="firstName" 
+          id="firstName"
           value={formData.first}
           onChange={handleChange}
-          required 
+          required
         />
         <br />
         <br />
@@ -52,23 +54,23 @@ const FullName = () => {
         <input
           type="text"
           name="last"
-          id="lastName" 
+          id="lastName"
           value={formData.last}
           onChange={handleChange}
           required
         />
         <br />
-        <button type="submit" style={{ marginLeft: 75, marginTop: 10 }}> 
+        <button type="submit" style={{ marginLeft: 75, marginTop: 10 }}>
           Submit
         </button>
-        {formError && ( 
+        {formError && (
           <p style={{ color: "red", margin: "5px 5px" }}>
             Please enter both First and Last Names.
           </p>
         )}
       </form>
 
-      {fullName && <p>Full Name: {fullName}</p>} 
+      {fullName && <p>Full Name: {fullName}</p>}
     </div>
   );
 };
