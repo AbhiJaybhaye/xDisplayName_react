@@ -35,7 +35,6 @@ const FullName = () => {
 
   return (
     <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
-      <hr />
       <h1>Full Name Display</h1>
       <form onSubmit={handleSubmit}> 
         <label htmlFor="firstName">First Name: </label>
@@ -48,6 +47,7 @@ const FullName = () => {
           required 
         />
         <br />
+        <br />
         <label htmlFor="lastName">Last Name: </label>
         <input
           type="text"
@@ -58,7 +58,7 @@ const FullName = () => {
           required
         />
         <br />
-        <button type="submit" style={{ marginLeft: 70, marginTop: 10 }}> 
+        <button type="submit" style={{ marginLeft: 75, marginTop: 10 }}> 
           Submit
         </button>
         {formError && ( 
